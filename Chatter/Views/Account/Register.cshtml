@@ -1,9 +1,17 @@
 ﻿@model Chatter.Models.RegisterViewModel
+@using Chatter.Models
+
 @{
     ViewBag.Title = "Register";
 }
 
 <h2>@ViewBag.Title.</h2>
+
+<div class="container">
+    <section id="socialLoginForm">
+        @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+    </section>
+</div>
 
 @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
@@ -34,6 +42,8 @@
             <input type="submit" class="btn btn-default" value="Register" />
         </div>
     </div>
+   
+
 }
 
 @section Scripts {
